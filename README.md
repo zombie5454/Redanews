@@ -8,12 +8,12 @@
 
 ### 安裝及環境建構
 
-1. 安裝所需套件：`yarn install:all`
+1. 安裝所需套件：分別在 /backend 和 /frontend 下執行 `yarn install` ( 請先確認 Node.js 是否已更新到最新版 )
 2. 確認套件皆有完成安裝，無出現 Error Messages
 3. 在 backend 資料夾下，放置 .env 檔案，其中包含以下內容：
    ```
-   MONGO_URL=mongodb+srv://starsstars:hermes1111@cluster0.bae3ozx.mongodb.net/?retryWrites=true&w=majority
-   GUARDIANS_KEY=88a6b377-661c-40c6-9a84-a516a316bfe2
+   MONGO_URL=mongodb+srv://zombie5454:Chapman5454@cluster0.6rofyn7.mongodb.net/?retryWrites=true&w=majority
+   GUARDIANS_KEY=82b7bed4-ca51-411f-b641-aabac0ac696f
    ```
    - 以上內容為開發者提供之資料庫及相關 API Token 請避免外流。
    - `GUARDIANS_KEY` 為本專案新聞相關 API 使用之 Token。
