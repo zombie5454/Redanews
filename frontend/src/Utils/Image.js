@@ -1,3 +1,8 @@
+const seed = ["Oliver", "Pepper", "Zoe", "Whiskers", "Tinkerbell",
+ "Snickers", "Patches", "Princess", "Bailey", "Cookie",
+  "Molly", "Jack", "Fluffy", "Sammy", "Sadie",
+   "Boots", "Bella", "Tigger", "Misty", "Gracie"];
+
 export function stringToColor(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i += 1) {
@@ -18,13 +23,20 @@ export function adjust(colorHex, amount) {
     )}`.substr(-2)
   )}`;
 }
-
+/*
 export function userNameBG(str) {
   return adjust(stringToColor(str), 90);
 }
-
+*/
+export function userNameBG(str) {
+  return seed[str.charCodeAt() % 20];
+}
+/*
 export function avatarSrc(str) {
   return `https://avatars.dicebear.com/api/croodles/:${str}.svg?background=%23${userNameBG(
     str
   )}`;
+}*/
+export function avatarSrc(str) {
+  return `https://api.dicebear.com/7.x/adventurer/svg?seed=${userNameBG(str)}`;
 }
