@@ -2,7 +2,7 @@
 
 ## RedactNews
 
-- A modify version of [redactle](https://www.redactle.com/#).
+- A modify version of [redactle](https://redactle.anybrowser.org/).
 
 ## 安裝與測試步驟
 
