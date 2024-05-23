@@ -4,6 +4,8 @@
 
 - A modify version of [redactle](https://redactle.anybrowser.org/).
 
+![HomePage](截圖/img2.png)![Game](截圖/img1.png)
+
 ## 安裝與測試步驟
 
 ### 安裝及環境建構
