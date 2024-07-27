@@ -1,0 +1,16 @@
+FROM node
+
+EXPOSE 4000
+
+COPY . ./app
+WORKDIR /app/backend
+
+ENV MONGO_URL "mongodb+srv://zombie5454:Chapman5454@cluster0.6rofyn7.mongodb.net/Redanews?retryWrites=true&w=majority"
+ENV GUARDIANS_KEY "82b7bed4-ca51-411f-b641-aabac0ac696f"
+
+RUN corepack enable
+RUN yarn install
+
+CMD ["MONGO_URL=${MONGO_URL}", "GUARDIANS_KEY=${GUARDIANS_KEY}", "yarn", "start"]
+
+
