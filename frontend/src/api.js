@@ -1,7 +1,12 @@
 import axios from "axios";
 
-const instance = axios.create({
-  baseURL: `http://localhost:4000`,
+let frontendURL = process.env.REACT_APP_frontendURL || `http://localhost:4000`;
+
+console.log(`my server is on ${process.env.REACT_APP_frontendURL}`)
+console.log(`my server is on ${frontendURL}`)
+
+const instance =  axios.create({
+  baseURL: frontendURL,
 });
 
 export default instance;
