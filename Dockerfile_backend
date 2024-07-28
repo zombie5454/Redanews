@@ -6,6 +6,6 @@ COPY . ./app
 WORKDIR /app/backend
 
 RUN corepack enable
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 CMD ["yarn", "start"]

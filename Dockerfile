@@ -1,14 +1,19 @@
+
 FROM node
 
-EXPOSE 4000
+EXPOSE 3000
 
 COPY . ./app
-WORKDIR /app/backend
+WORKDIR /app/frontend
+
+ENV REACT_APP_frontendURL="https://redanews.onrender.com"
 
 RUN corepack enable
-RUN yarn install
+RUN yarn install --frozen-lockfile
+RUN yarn build
+RUN yarn global add serve
 
-CMD ["yarn", "start"]
+CMD ["serve", "-s", "-n", "build"]
 
 
 
