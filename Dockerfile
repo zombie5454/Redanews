@@ -1,15 +1,17 @@
-
 FROM node
 
-EXPOSE 3000
+EXPOSE 4000
 
 COPY . ./app
-WORKDIR /app/frontend
+WORKDIR /app/backend
 
 RUN corepack enable
 RUN yarn install
-RUN yarn build
-RUN yarn global add serve
 
-CMD ["server", "-s", "build"]
+CMD ["yarn", "start"]
+
+
+
+
+
 

@@ -9,5 +9,3 @@ RUN corepack enable
 RUN yarn install
 
 CMD ["yarn", "start"]
-
-
