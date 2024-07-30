@@ -1,19 +1,26 @@
-
 FROM node
 
-EXPOSE 3000
+EXPOSE 4000
 
 COPY . ./app
-WORKDIR /app/frontend
-
-ENV REACT_APP_frontendURL="https://redanews.onrender.com"
 
 RUN corepack enable
+
+ARG MONGO_URL_ARG
+ARG GUARDIANS_KEY_ARG
+ENV MONGO_URL=${MONGO_URL_ARG}
+ENV GUARDIANS_KEY=${GUARDIANS_KEY_ARG}
+#RUN echo MONGO_URL=${MONGO_URL}
+#RUN echo GUARDIANS_KEY=${GUARDIANS_KEY}
+
+WORKDIR /app/frontend
 RUN yarn install --frozen-lockfile
 RUN yarn build
-RUN yarn global add serve
 
-CMD ["serve", "-s", "-n", "build"]
+WORKDIR /app/backend
+RUN yarn install --frozen-lockfile
+
+CMD ["yarn", "start"]
 
 
 

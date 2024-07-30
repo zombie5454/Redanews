@@ -5,6 +5,11 @@ EXPOSE 4000
 COPY . ./app
 WORKDIR /app/backend
 
+ARG MONGO_URL_ARG
+ARG GUARDIANS_KEY_ARG
+ENV MONGO_URL=${MONGO_URL_ARG}
+ENV GUARDIANS_KEY=${GUARDIANS_KEY_ARG}
+
 RUN corepack enable
 RUN yarn install --frozen-lockfile
 
