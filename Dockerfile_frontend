@@ -6,7 +6,9 @@ EXPOSE 3000
 COPY . ./app
 WORKDIR /app/frontend
 
-ENV REACT_APP_frontendURL="https://redanews.onrender.com"
+ARG REACT_APP_SERVER_ARG
+ENV REACT_APP_SERVER=${REACT_APP_SERVER_ARG}
+ENV REACT_APP_MODE="frontend"
 
 RUN corepack enable
 RUN yarn install --frozen-lockfile

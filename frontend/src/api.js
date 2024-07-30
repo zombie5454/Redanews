@@ -1,15 +1,17 @@
 import axios from "axios";
 
-let frontendURL = process.env.REACT_APP_frontendURL || `http://localhost:4000`;
+let serverURL = process.env.REACT_APP_SERVER || `http://localhost:4000`;
 
-if(process.env.NODE_ENV == "production")
-  frontendURL = "/"
+if(process.env.REACT_APP_MODE == "full-stack")
+  serverURL = "/"
 
-console.log(`my server is on ${process.env.REACT_APP_frontendURL}`)
-console.log(`my server is on ${frontendURL}`)
+
+console.log(`process.env.REACT_APP_SERVER = ${process.env.REACT_APP_SERVER}`)
+console.log(`REACT_APP_MODE = ` + process.env.REACT_APP_MODE)
+console.log(`my server is on ${serverURL}`)
 
 const instance =  axios.create({
-  baseURL: frontendURL,
+  baseURL: serverURL,
 });
 
 export default instance;
