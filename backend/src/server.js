@@ -7,19 +7,11 @@ import path from "path"
 
 const app = express();
 
-//app.use(cors());
-/*app.use(cors({
-  origin: '*', // 或者設置具體的來源
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
-  credentials: true,
-  maxAge: 7200
-}));*/
+console.log("open mode : " + process.env.MODE)
 
-
-if(process.env.NODE_ENV != "production"){
+if(process.env.MODE == "backend"){
   // Set middleware of CORS munally
-  app.use((req, res, next) => {
+  /*app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers");
@@ -33,12 +25,22 @@ if(process.env.NODE_ENV != "production"){
     }
 
     next();
-  });
+  });*/
+
+  app.use(cors());
+/*app.use(cors({
+  origin: '*', // 或者設置具體的來源
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+  credentials: true,
+  maxAge: 7200
+}));*/
 }
+
 app.use(express.json());
 app.use('/', routes);
 
-if(process.env.NODE_ENV == "production"){
+if(process.env.MODE == "full-stack"){
   const __dirname = path.resolve()
   app.use(express.static(path.join(__dirname, "../frontend", "build")))
   app.get("/*", function (req, res){
