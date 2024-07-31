@@ -2,6 +2,7 @@
 
 ## RedactNews
 
+- **TRY IT NOW** [Online link](https://redanews-fullstack.onrender.com/) (It may take a few seconds...)
 - A modify version of [redactle](https://redactle.anybrowser.org/).
 
 ![HomePage](截圖/img2.png)![Game](截圖/img1.png)
