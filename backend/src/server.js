@@ -6,41 +6,19 @@ import newsAPI from './newsAPI.js';
 import path from "path"
 
 const app = express();
-
+if(!process.env.MODE)
+  process.env.MODE = "backend"
 console.log("open mode : " + process.env.MODE)
 
-if(process.env.MODE == "backend"){
-  // Set middleware of CORS munally
-  /*app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers");
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    res.setHeader("Access-Control-Allow-Private-Network", true);
-    res.setHeader("Access-Control-Max-Age", 7200);
-
-    // 處理預檢請求
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(204);
-    }
-
-    next();
-  });*/
-
+if(!process.env.MODE || process.env.MODE == "backend"){
   app.use(cors());
-/*app.use(cors({
-  origin: '*', // 或者設置具體的來源
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
-  credentials: true,
-  maxAge: 7200
-}));*/
+  app.use(express.json());
+  app.use('/', routes);
 }
 
-app.use(express.json());
-app.use('/', routes);
-
-if(process.env.MODE == "full-stack"){
+else if(process.env.MODE == "full-stack"){
+  app.use(express.json());
+  app.use('/', routes);
   const __dirname = path.resolve()
   app.use(express.static(path.join(__dirname, "../frontend", "build")))
   app.get("/*", function (req, res){
