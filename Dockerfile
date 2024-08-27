@@ -17,7 +17,7 @@ ENV REACT_APP_MODE="full-stack"
 
 WORKDIR /app/frontend
 RUN yarn install --frozen-lockfile
-RUN yarn build
+RUN REACT_APP_MODE="full-stack" yarn build
 
 WORKDIR /app/backend
 RUN yarn install --frozen-lockfile
