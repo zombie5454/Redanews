@@ -1,5 +1,6 @@
 import { Box, Container, HStack, Text, Button, Grid, GridItem, Input, Flex } from "@chakra-ui/react";
 
+// Only use as a template
 const Game = ()=>{
 	return(
 		<Grid
