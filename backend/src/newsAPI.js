@@ -88,7 +88,7 @@ export default {
               const newNews = new TrendingNews({
                 title: body.response.results[i].webTitle,
                 article:
-                  body.response.results[i].blocks.body[0].bodyTextSummary,
+                  body.response.results[i].blocks.body[0].bodyTextSummary.slice(0, 150),  // we don't need to store the whole content
                 link: body.response.results[i].webUrl,
                 date: today_date,
               });
