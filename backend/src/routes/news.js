@@ -66,7 +66,7 @@ router.get("/today", async (req, res) => {
   }
 });
 
-router.get("/all/:id/stat", async (req, res) => {
+router.get("/all/:id/stat", async (req, res) => {     // not used, the assignment is handled by /:userId/history
   if (mongoose.isValidObjectId(req.params.id)) {
     const news = await News.findById(req.params.id);
     if (!news) {
