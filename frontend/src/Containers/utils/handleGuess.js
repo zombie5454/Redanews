@@ -1,6 +1,6 @@
 import { commonWords, regex } from "./variables";
 import axios from "../../api";
-import { getCookie } from "../../Utils/CookieUsage";
+import { getCookie, setCookie } from "../../Utils/CookieUsage";
 
 // Function for counting word hits with the today's quiz
 const countHits = (currentGuess, news) => {
@@ -105,6 +105,13 @@ const handleGuess = async (
         count: cntHit,
       },
     ]);
+    setCookie("guesses", JSON.stringify([     // save guest users' guesses as cookie until tomorrow  
+      ...guesses,
+      {
+        vocab: currentGuess,
+        count: cntHit,
+      },
+    ]))   
     return true;
   }
 };

@@ -107,10 +107,11 @@ const GuessGame = () => {
               setLoadGuess(true);
             }
           });
-      } else {  
-        if (news) {
-          if (getCookie("guesses")) {   // TODO: set cookie of guesses
-            setGuesses(guesses);
+      } else {                          // for guest user
+        if (news) {                    
+          let guessRecord = getCookie("guesses")
+          if (guessRecord !== "") {   
+            setGuesses(JSON.parse(guessRecord));
           }
           setLoadGuess(true);
         }

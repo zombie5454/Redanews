@@ -1,8 +1,15 @@
-const setCookie = (cname, cvalue, exdays) => {
-    var d = new Date();
+const setCookie = (cname, cvalue, exdays=-1) => {
+  var d = new Date();
+  let expires = "";
+  if(exdays == -1){        // 當天結束
+    let tomorrow = new Date(d.getFullYear(), d.getMonth(), d.getDate()+1)
+    expires = "expires=" + tomorrow.toGMTString();
+  }
+  else{
     d.setTime(d.getTime() + (exdays*60*1000));
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    expires = "expires=" + d.toGMTString();
+  }
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 const deleteCookie = () => {
