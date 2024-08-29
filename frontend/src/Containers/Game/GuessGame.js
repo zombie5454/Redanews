@@ -76,7 +76,7 @@ const GuessGame = () => {
       if (getCookie("guessId") !== "" || getCookie("guessId")) {
         curGuessId = getCookie("guessId");
       }
-      if (curGuessId !== "" && news) {
+      if (curGuessId !== "" && news) {    // For logged-in user
         await axios
           .get("/guess/" + curGuessId)
           .catch((e) => {
@@ -107,9 +107,9 @@ const GuessGame = () => {
               setLoadGuess(true);
             }
           });
-      } else {
+      } else {  
         if (news) {
-          if (getCookie("guesses")) {
+          if (getCookie("guesses")) {   // TODO: set cookie of guesses
             setGuesses(guesses);
           }
           setLoadGuess(true);
